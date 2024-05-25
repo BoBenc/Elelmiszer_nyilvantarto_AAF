@@ -1,0 +1,85 @@
+﻿<Window x:Class="Elelmiszer_nyilvantarto_WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Elelmiszer_nyilvantarto_WPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        AllowsTransparency="True"
+        WindowStyle="None"
+        Background="Transparent">
+    <Border BorderBrush="LightBlue" BorderThickness="15" Background="AliceBlue" Padding="5" CornerRadius="20">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75"/>
+                <RowDefinition/>
+                <RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Élelmiszer nyilvántartó"
+                       MouseLeftButtonDown="TextBlock_MouseLeftButtonDown"
+                       FontSize="26"
+                       FontFamily="Arial"
+                       Padding="0,19"
+                       Margin="0,10"
+                       Foreground="Black"
+                       Grid.ColumnSpan="3"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Stretch"
+                       TextAlignment="Center"
+                       Background="DeepSkyBlue"
+                       />
+            <ListBox x:Name="ListBox_Lista" IsSynchronizedWithCurrentItem="True" Margin="25,0,0,0" Grid.Row="1" FontSize="20">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border Background="White" Margin="5">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Name}"/>
+                                <TextBlock Text=" - "/>
+                                <TextBlock Text="{Binding Number}"/>
+                                <TextBlock Text=" darab"/>
+                                <Button x:Name="plus" Click="plus_Click" Content="+"/>
+                                <Button x:Name="minus" Click="minus_Click" Content="-"/>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
+                <TextBlock Text="Név : "
+                           HorizontalAlignment="Right"
+                           FontSize="22"
+                           Padding="0,10"
+                           Foreground="DarkBlue"/>
+                <TextBlock Text="Mennyiség: "
+                           HorizontalAlignment="Right"
+                           FontSize="22"
+                           Padding="0,10"
+                           Foreground="DarkBlue"/>
+            </StackPanel>
+            <StackPanel x:Name="stackpanelInput" Margin="0,0,25,0" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center">
+                <TextBox Text="{Binding Name}"
+                         HorizontalAlignment="Stretch"
+                         FontSize="22"
+                         Padding="0,10"
+                         Foreground="Black"/>
+                <TextBox Text="{Binding Number}"
+                         HorizontalAlignment="Stretch"
+                         FontSize="22"
+                         Padding="0,10"
+                         Foreground="Black"/>
+            </StackPanel>
+            <StackPanel Grid.Row="2" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button x:Name="Add" Content="Hozzáadás" Width="150" FontSize="20" Margin="20" Click="Add_Click"/>
+                <Button x:Name="Update" Content="Frissítés" Width="150" FontSize="20" Margin="20" Click="Update_Click"/>
+                <Button x:Name="Delete" Content="Törlés" Width="150" FontSize="20" Margin="20" Click="Delete_Click"/>
+                <Button x:Name="CloseBuuton" Content="Kilépés" Width="150" FontSize="20" Margin="20" Click="CloseBuuton_Click"/>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>
